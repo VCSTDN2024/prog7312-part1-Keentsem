@@ -1,0 +1,95 @@
+@page
+@model MunicipalServicesApp.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register - South African Municipal Services";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h3 class="mb-0">
+                        <i class="fas fa-user-plus me-2"></i>🇿🇦 Register
+                    </h3>
+                    <p class="text-muted mb-0">Join the South African Municipal Services community</p>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Username" class="form-label">Username *</label>
+                                <input asp-for="Username" class="form-control" placeholder="Choose a username" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Email" class="form-label">Email</label>
+                                <input asp-for="Email" type="email" class="form-control" placeholder="your@email.com" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Password" class="form-label">Password *</label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Create a password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label">Confirm Password *</label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm password" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FullName" class="form-label">Full Name</label>
+                                <input asp-for="FullName" class="form-control" placeholder="Your full name" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Municipality" class="form-label">Municipality</label>
+                                <input asp-for="Municipality" class="form-control" placeholder="e.g., Cape Town" />
+                                <span asp-validation-for="Municipality" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Province" class="form-label">Province</label>
+                            <select asp-for="Province" class="form-select">
+                                <option value="">Select Province</option>
+                                <option value="Western Cape">Western Cape</option>
+                                <option value="Gauteng">Gauteng</option>
+                                <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                                <option value="Eastern Cape">Eastern Cape</option>
+                                <option value="Free State">Free State</option>
+                                <option value="Mpumalanga">Mpumalanga</option>
+                                <option value="Limpopo">Limpopo</option>
+                                <option value="Northern Cape">Northern Cape</option>
+                                <option value="North West">North West</option>
+                            </select>
+                            <span asp-validation-for="Province" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i>Create Account
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Already have an account? 
+                            <a asp-page="/Login" class="text-decoration-none">Login here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

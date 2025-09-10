@@ -1,0 +1,429 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\MunicapalServicesApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\MunicapalServicesApp.4opgb8ko6s.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\SA.png",
+      "PackagePath": "staticwebassets\\images\\SA.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\badges\\community_champion.png",
+      "PackagePath": "staticwebassets\\images\\badges\\community_champion.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\badges\\community_helper.png",
+      "PackagePath": "staticwebassets\\images\\badges\\community_helper.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\badges\\first_responder.png",
+      "PackagePath": "staticwebassets\\images\\badges\\first_responder.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\badges\\media_contributor.png",
+      "PackagePath": "staticwebassets\\images\\badges\\media_contributor.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\coatofarms.png",
+      "PackagePath": "staticwebassets\\images\\coatofarms.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\eco_guardian.png",
+      "PackagePath": "staticwebassets\\images\\eco_guardian.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\first_responder.png",
+      "PackagePath": "staticwebassets\\images\\first_responder.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\neighborhood_watcher.png",
+      "PackagePath": "staticwebassets\\images\\neighborhood_watcher.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\persistent_reporter.png",
+      "PackagePath": "staticwebassets\\images\\persistent_reporter.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\power_saver.png",
+      "PackagePath": "staticwebassets\\images\\power_saver.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\road_warrior.png",
+      "PackagePath": "staticwebassets\\images\\road_warrior.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\safety_sentinel.png",
+      "PackagePath": "staticwebassets\\images\\safety_sentinel.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\services.jpg",
+      "PackagePath": "staticwebassets\\images\\services.jpg"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\images\\water_saver.png",
+      "PackagePath": "staticwebassets\\images\\water_saver.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\067faf34-d4f5-4620-9816-c11507f24949_ChatGPT Image Apr 16, 2025, 12_52_33 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\067faf34-d4f5-4620-9816-c11507f24949_ChatGPT Image Apr 16, 2025, 12_52_33 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\1a0bc979-c37e-49b0-8412-9f90f606919b_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\1a0bc979-c37e-49b0-8412-9f90f606919b_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\2888b7a3-c1a6-4a3a-af29-3b2d46489cda_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\2888b7a3-c1a6-4a3a-af29-3b2d46489cda_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\3b44b358-a715-4222-9bfc-a20fbf98f8cb_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\3b44b358-a715-4222-9bfc-a20fbf98f8cb_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\4617393a-288a-40a5-af32-17063b9da3a7_ChatGPT Image Apr 26, 2025, 09_48_20 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\4617393a-288a-40a5-af32-17063b9da3a7_ChatGPT Image Apr 26, 2025, 09_48_20 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\48771499-5e9c-47e7-8998-312c57fa1d7f_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\48771499-5e9c-47e7-8998-312c57fa1d7f_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\4b62f8ec-9809-4f0e-8ee9-c8187ada47ae_necessity.png",
+      "PackagePath": "staticwebassets\\uploads\\4b62f8ec-9809-4f0e-8ee9-c8187ada47ae_necessity.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\598daac1-2363-4059-a4f3-041a3939b58c_axis_it_mongodb_design.png",
+      "PackagePath": "staticwebassets\\uploads\\598daac1-2363-4059-a4f3-041a3939b58c_axis_it_mongodb_design.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\60e3e247-4487-4d2b-a54e-7e571bb4cc60_axis_it_mongodb_design.png",
+      "PackagePath": "staticwebassets\\uploads\\60e3e247-4487-4d2b-a54e-7e571bb4cc60_axis_it_mongodb_design.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\7698df89-7616-447c-9cc0-e8ce486ecba8_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\7698df89-7616-447c-9cc0-e8ce486ecba8_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\7b7384cf-e3c7-41fc-85b1-399951ec650c_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\7b7384cf-e3c7-41fc-85b1-399951ec650c_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\8ff004fd-6c9e-4c2b-b269-cbd40ea0e827_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\8ff004fd-6c9e-4c2b-b269-cbd40ea0e827_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\91d886a6-68b4-40de-999d-c11562f6d7a3_axis_it_mongodb_design.png",
+      "PackagePath": "staticwebassets\\uploads\\91d886a6-68b4-40de-999d-c11562f6d7a3_axis_it_mongodb_design.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\9767b56a-0465-47d2-bd63-3e4cdb721e8b_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\9767b56a-0465-47d2-bd63-3e4cdb721e8b_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\a4f5aeac-6716-48a9-8edb-9f497bafe31f_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\a4f5aeac-6716-48a9-8edb-9f497bafe31f_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\b6687566-e665-4bd5-9066-d2a7b9607d93_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\b6687566-e665-4bd5-9066-d2a7b9607d93_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\cc74aa80-4f55-47d4-980b-e41ed643fd1d_axis_it_mongodb_design.png",
+      "PackagePath": "staticwebassets\\uploads\\cc74aa80-4f55-47d4-980b-e41ed643fd1d_axis_it_mongodb_design.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\cc77d794-a3d4-4bd6-bc31-b1187e737dcf_axis_it_mongodb_design.png",
+      "PackagePath": "staticwebassets\\uploads\\cc77d794-a3d4-4bd6-bc31-b1187e737dcf_axis_it_mongodb_design.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\dc735254-6ad1-4c4c-8d85-b5f4efb5655a_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\dc735254-6ad1-4c4c-8d85-b5f4efb5655a_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\f28aa886-4500-43ce-bf2d-8d36ef78752b_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png",
+      "PackagePath": "staticwebassets\\uploads\\f28aa886-4500-43ce-bf2d-8d36ef78752b_ChatGPT Image Aug 25, 2025, 08_21_24 PM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\f4b03406-c1b7-4e7f-a03d-5d0b5b02ef39_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png",
+      "PackagePath": "staticwebassets\\uploads\\f4b03406-c1b7-4e7f-a03d-5d0b5b02ef39_ChatGPT Image Sep 10, 2025, 10_10_13 AM.png"
+    },
+    {
+      "Id": "C:\\Users\\keent\\source\\repos\\MunicapalServicesApp\\MunicapalServicesApp\\wwwroot\\uploads\\fd72166a-7ea7-4c51-a122-d0323ef28774_axis_it_mongodb_design.png",
+      "PackagePath": "staticwebassets\\uploads\\fd72166a-7ea7-4c51-a122-d0323ef28774_axis_it_mongodb_design.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.MunicapalServicesApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.MunicapalServicesApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.MunicapalServicesApp.props",
+      "PackagePath": "build\\MunicapalServicesApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.MunicapalServicesApp.props",
+      "PackagePath": "buildMultiTargeting\\MunicapalServicesApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.MunicapalServicesApp.props",
+      "PackagePath": "buildTransitive\\MunicapalServicesApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

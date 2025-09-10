@@ -1,0 +1,211 @@
+@page
+@model MunicipalServicesApp.Pages.AnalyticsDashboardModel
+@{
+    ViewData["Title"] = "Municipal Analytics Dashboard";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-4">
+                <i class="fas fa-chart-line me-2"></i>Municipal Analytics Dashboard
+            </h1>
+            <p class="lead text-muted">Real-time insights for municipal service optimization</p>
+        </div>
+    </div>
+
+    <!-- Peak Reporting Times -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-clock me-2"></i>Peak Reporting Times</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Peak Day:</strong> @Model.PeakReportingDay<br>
+                        <strong>Peak Hour:</strong> @Model.PeakReportingHour:00<br>
+                        <strong>Issues Reported:</strong> @Model.PeakIssueCount
+                    </p>
+                    <small class="text-muted">Use this data for crew scheduling and resource allocation</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-users me-2"></i>Resource Recommendations</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Recommended Crew Size:</strong> @Model.RecommendedCrewSize<br>
+                        <strong>Current Efficiency:</strong> @Model.CurrentEfficiency.ToString("P1")
+                    </p>
+                    <small class="text-muted">Based on historical issue volume patterns</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workflow Bottlenecks -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Workflow Bottlenecks</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.WorkflowBottlenecks.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Priority</th>
+                                        <th>In Progress</th>
+                                        <th>Open</th>
+                                        <th>Severity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var bottleneck in Model.WorkflowBottlenecks)
+                                    {
+                                        <tr class="@(bottleneck.Severity == "High" ? "table-danger" : "table-warning")">
+                                            <td>@bottleneck.Category</td>
+                                            <td>@bottleneck.Priority</td>
+                                            <td>@bottleneck.InProgressCount</td>
+                                            <td>@bottleneck.OpenCount</td>
+                                            <td>
+                                                <span class="badge bg-@(bottleneck.Severity == "High" ? "danger" : "warning")">
+                                                    @bottleneck.Severity
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-success mb-0">No workflow bottlenecks detected. System is running efficiently!</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seasonal Predictions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-info">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Seasonal Issue Predictions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var prediction in Model.SeasonalPredictions)
+                        {
+                            <div class="col-md-4 mb-3">
+                                <div class="card border-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">@prediction.Category</h6>
+                                        <p class="card-text">
+                                            <strong>Predicted Volume:</strong> @prediction.PredictedVolume<br>
+                                            <strong>Trend:</strong> 
+                                            <span class="badge bg-@(prediction.Trend == "Increasing" ? "danger" : prediction.Trend == "Decreasing" ? "success" : "secondary")">
+                                                @prediction.Trend
+                                            </span><br>
+                                            <strong>Confidence:</strong> @prediction.Confidence.ToString("P0")
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resolution Times by Category -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-stopwatch me-2"></i>Average Resolution Times</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var resolutionTime in Model.ResolutionTimes)
+                        {
+                            <div class="col-md-3 mb-2">
+                                <div class="d-flex justify-content-between align-items-center p-2 border rounded">
+                                    <span>@resolutionTime.Category</span>
+                                    <span class="badge bg-@(resolutionTime.AverageHours < 24 ? "success" : resolutionTime.AverageHours < 72 ? "warning" : "danger")">
+                                        @resolutionTime.AverageHours.ToString("F1")h
+                                    </span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-star me-2"></i>Category Satisfaction Scores</h5>
+                </div>
+                <div class="card-body">
+                    @for (int i = 0; i < Model.CategorySatisfactionScores.Length; i++)
+                    {
+                        var category = (MunicipalServicesApp.Models.IssueCategory)i;
+                        var score = Model.CategorySatisfactionScores[i];
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span>@category</span>
+                                <span>@score.ToString("P0")</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-@(score > 0.8 ? "success" : score > 0.6 ? "warning" : "danger")" 
+                                     style="width: @(score * 100)%"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-tachometer-alt me-2"></i>Priority Efficiency Scores</h5>
+                </div>
+                <div class="card-body">
+                    @for (int i = 0; i < Model.PriorityEfficiencyScores.Length; i++)
+                    {
+                        var priority = (MunicipalServicesApp.Models.IssuePriority)i;
+                        var score = Model.PriorityEfficiencyScores[i];
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span>@priority</span>
+                                <span>@score.ToString("P0")</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-@(score > 0.8 ? "success" : score > 0.6 ? "warning" : "danger")" 
+                                     style="width: @(score * 100)%"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

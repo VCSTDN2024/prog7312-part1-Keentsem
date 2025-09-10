@@ -1,0 +1,444 @@
+@page
+@model MunicipalServicesApp.Pages.AdvancedFeaturesModel
+@{
+    ViewData["Title"] = "Municipal Services & Community Features";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2><i class="fas fa-city me-2"></i>Municipal Services & Community Features</h2>
+                    <p class="mb-0">Smart tools to help municipal staff manage community reports, analyze service patterns, and improve citizen engagement</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Community Data Management -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h4><i class="fas fa-database me-2"></i>Report Management & System Tools</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5>Service Organization & Planning</h5>
+                                    <p>Advanced data organization for efficient municipal service delivery:</p>
+                                    <ul>
+                                        <li><strong>Service Mapping:</strong> Track issues by category and location</li>
+                                        <li><strong>Resource Planning:</strong> Optimize crew dispatch by priority and area</li>
+                                        <li><strong>Community Hierarchy:</strong> Organize services by municipal districts</li>
+                                    </ul>
+                                    
+                                    <h5>Report Sorting & Organization</h5>
+                                    <div class="btn-group mb-3" role="group">
+                                        <button type="button" class="btn btn-outline-primary" onclick="quickSort()">🚨 Sort by Urgency</button>
+                                        <button type="button" class="btn btn-outline-primary" onclick="mergeSort()">📅 Sort by Date</button>
+                                        <button type="button" class="btn btn-outline-primary" onclick="heapSort()">⭐ Sort by Impact</button>
+                                    </div>
+                                    
+                                    <h5>System Performance & Efficiency</h5>
+                                    <div class="btn-group mb-3" role="group">
+                                        <button type="button" class="btn btn-outline-success" onclick="compareArrayVsList()">⚡ Test System Speed</button>
+                                        <button type="button" class="btn btn-outline-info" onclick="analyzeAlgorithmComplexity()">⏱️ Analyze Response Times</button>
+                                        <button type="button" class="btn btn-outline-warning" onclick="runMemoryAnalysis()">💾 Check Memory Usage</button>
+                                    </div>
+                                    
+                                    <div id="sortingResults" class="mt-3"></div>
+                                    <div id="comparisonResults" class="mt-3"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cultural Inclusion & Community Engagement -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <h4><i class="fas fa-hands-helping me-2"></i>Community Report Analysis & Tools</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5>Issue Priority & Comparison Tools</h5>
+                                    <p>Smart tools to help municipal staff prioritize and manage community reports:</p>
+                                    <div class="btn-group mb-3" role="group">
+                                        <button type="button" class="btn btn-outline-success" onclick="testOperators()">⚖️ Compare Issue Urgency</button>
+                                        <button type="button" class="btn btn-outline-success" onclick="mergeIssues()">🔗 Combine Similar Reports</button>
+                                        <button type="button" class="btn btn-outline-success" onclick="scaleIssue()">📊 Assess Community Impact</button>
+                                    </div>
+                                    
+                                    <h5>Community Report Analysis</h5>
+                                    <p>Analyze patterns in community reports to improve service delivery:</p>
+                                    <div class="btn-group mb-3" role="group">
+                                        <button type="button" class="btn btn-outline-warning" onclick="countRecursively()">📈 Count Reports by Type</button>
+                                        <button type="button" class="btn btn-outline-warning" onclick="filterRecursively()">🚨 Find Urgent Reports</button>
+                                        <button type="button" class="btn btn-outline-warning" onclick="calculatePointsRecursively()">🏆 Calculate Community Engagement</button>
+                                    </div>
+                                    
+                                    <h5>Municipal Data Management</h5>
+                                    <p>Advanced tools for organizing and accessing municipal service data:</p>
+                                    <button type="button" class="btn btn-outline-info" onclick="testGenerics()">🗃️ Test Data System</button>
+                                    
+                                    <div id="operatorResults" class="mt-3"></div>
+                                    <div id="recursionResults" class="mt-3"></div>
+                                    <div id="genericResults" class="mt-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Impact Results -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4><i class="fas fa-chart-bar me-2"></i>Community Impact & Service Results</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="resultsContainer">
+                                        <p class="text-muted">Click the buttons above to see community engagement analytics and service efficiency metrics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Public Life Integration -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4><i class="fas fa-calendar-alt me-2"></i>Community Distribution & Geographic Analysis</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-3">Analyze how community reports are distributed across different areas and service categories:</p>
+                                    <button type="button" class="btn btn-primary" onclick="analyzeGeographicalData()">🗺️ Analyze Community Distribution</button>
+                                    <div id="geographicalResults" class="mt-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Learning Unit 1: Custom Sorting Demonstrations
+        function quickSort() {
+            console.log('QuickSort button clicked');
+            document.getElementById('sortingResults').innerHTML = '<div class="alert alert-info">Loading QuickSort results...</div>';
+            
+            fetch('/AdvancedFeatures?handler=QuickSort')
+                .then(response => {
+                    console.log('QuickSort response received:', response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('QuickSort data received:', data);
+                    document.getElementById('sortingResults').innerHTML = 
+                        '<div class="alert alert-info"><h6>QuickSort Results:</h6>' + data + '</div>';
+                })
+                .catch(error => {
+                    console.error('QuickSort error:', error);
+                    document.getElementById('sortingResults').innerHTML = 
+                        '<div class="alert alert-danger">Error loading QuickSort results: ' + error.message + '</div>';
+                });
+        }
+
+        function mergeSort() {
+            console.log('MergeSort button clicked');
+            document.getElementById('sortingResults').innerHTML = '<div class="alert alert-info">Loading MergeSort results...</div>';
+            
+            fetch('/AdvancedFeatures?handler=MergeSort')
+                .then(response => {
+                    console.log('MergeSort response received:', response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('MergeSort data received:', data);
+                    document.getElementById('sortingResults').innerHTML = 
+                        '<div class="alert alert-info"><h6>MergeSort Results:</h6>' + data + '</div>';
+                })
+                .catch(error => {
+                    console.error('MergeSort error:', error);
+                    document.getElementById('sortingResults').innerHTML = 
+                        '<div class="alert alert-danger">Error loading MergeSort results: ' + error.message + '</div>';
+                });
+        }
+
+        function heapSort() {
+            console.log('HeapSort button clicked');
+            document.getElementById('sortingResults').innerHTML = '<div class="alert alert-info">Loading HeapSort results...</div>';
+            
+            fetch('/AdvancedFeatures?handler=HeapSort')
+                .then(response => {
+                    console.log('HeapSort response received:', response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('HeapSort data received:', data);
+                    document.getElementById('sortingResults').innerHTML = 
+                        '<div class="alert alert-info"><h6>HeapSort Results:</h6>' + data + '</div>';
+                })
+                .catch(error => {
+                    console.error('HeapSort error:', error);
+                    document.getElementById('sortingResults').innerHTML = 
+                        '<div class="alert alert-danger">Error loading HeapSort results: ' + error.message + '</div>';
+                });
+        }
+
+        function compareArrayVsList() {
+            fetch('/AdvancedFeatures?handler=CompareArrayVsList')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('comparisonResults').innerHTML = 
+                        '<div class="alert alert-success"><h6>Array vs List Comparison:</h6>' + data + '</div>';
+                });
+        }
+
+        // Learning Unit 2: Operator Overloading Demonstrations
+        function testOperators() {
+            console.log('TestOperators button clicked');
+            document.getElementById('operatorResults').innerHTML = '<div class="alert alert-info">Loading operator test results...</div>';
+            
+            fetch('/AdvancedFeatures?handler=TestOperators')
+                .then(response => {
+                    console.log('TestOperators response received:', response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('TestOperators data received:', data);
+                    document.getElementById('operatorResults').innerHTML = 
+                        '<div class="alert alert-success"><h6>Operator Overloading Test:</h6>' + data + '</div>';
+                })
+                .catch(error => {
+                    console.error('TestOperators error:', error);
+                    document.getElementById('operatorResults').innerHTML = 
+                        '<div class="alert alert-danger">Error loading operator test results: ' + error.message + '</div>';
+                });
+        }
+
+        function mergeIssues() {
+            fetch('/AdvancedFeatures?handler=MergeIssues')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('operatorResults').innerHTML = 
+                        '<div class="alert alert-success"><h6>Issue Merging (+ operator):</h6>' + data + '</div>';
+                });
+        }
+
+        function scaleIssue() {
+            fetch('/AdvancedFeatures?handler=ScaleIssue')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('operatorResults').innerHTML = 
+                        '<div class="alert alert-success"><h6>Issue Scaling (* operator):</h6>' + data + '</div>';
+                });
+        }
+
+        // Learning Unit 2: Recursion Demonstrations
+        function countRecursively() {
+            fetch('/AdvancedFeatures?handler=CountRecursively')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('recursionResults').innerHTML = 
+                        '<div class="alert alert-warning"><h6>Recursive Counting:</h6>' + data + '</div>';
+                });
+        }
+
+        function filterRecursively() {
+            fetch('/AdvancedFeatures?handler=FilterRecursively')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('recursionResults').innerHTML = 
+                        '<div class="alert alert-warning"><h6>Recursive Filtering:</h6>' + data + '</div>';
+                });
+        }
+
+        function calculatePointsRecursively() {
+            fetch('/AdvancedFeatures?handler=CalculatePointsRecursively')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('recursionResults').innerHTML = 
+                        '<div class="alert alert-warning"><h6>Recursive Point Calculation:</h6>' + data + '</div>';
+                });
+        }
+
+        // Learning Unit 2: Advanced Generics
+        function testGenerics() {
+            fetch('/AdvancedFeatures?handler=TestGenerics')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('genericResults').innerHTML = 
+                        '<div class="alert alert-info"><h6>Generic Repository Test:</h6>' + data + '</div>';
+                });
+        }
+
+        // Geographical Data Analysis
+        function analyzeGeographicalData() {
+            fetch('/AdvancedFeatures?handler=AnalyzeGeographicalData')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('geographicalResults').innerHTML = 
+                        '<div class="alert alert-primary"><h6>Geographical Analysis:</h6>' + data + '</div>';
+                });
+        }
+
+        // Algorithm Complexity Analysis
+        function analyzeAlgorithmComplexity() {
+            const complexityData = {
+                'QuickSort': {
+                    'Time': 'O(n log n) average, O(n²) worst case',
+                    'Space': 'O(log n) - recursion stack',
+                    'Best Case': 'O(n log n) - balanced partitions',
+                    'Worst Case': 'O(n²) - already sorted or reverse sorted',
+                    'Stable': 'No',
+                    'In-Place': 'Yes'
+                },
+                'MergeSort': {
+                    'Time': 'O(n log n) guaranteed',
+                    'Space': 'O(n) - temporary array',
+                    'Best Case': 'O(n log n)',
+                    'Worst Case': 'O(n log n)',
+                    'Stable': 'Yes',
+                    'In-Place': 'No'
+                },
+                'HeapSort': {
+                    'Time': 'O(n log n) guaranteed',
+                    'Space': 'O(1) - in-place',
+                    'Best Case': 'O(n log n)',
+                    'Worst Case': 'O(n log n)',
+                    'Stable': 'No',
+                    'In-Place': 'Yes'
+                },
+                'InsertionSort': {
+                    'Time': 'O(n²)',
+                    'Space': 'O(1) - in-place',
+                    'Best Case': 'O(n) - already sorted',
+                    'Worst Case': 'O(n²) - reverse sorted',
+                    'Stable': 'Yes',
+                    'In-Place': 'Yes'
+                }
+            };
+
+            let html = '<div class="alert alert-info"><h6><i class="fas fa-brain me-2"></i>Algorithm Complexity Analysis</h6>';
+            html += '<div class="row">';
+            
+            Object.entries(complexityData).forEach(([algorithm, properties]) => {
+                html += `
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">${algorithm}</h6>
+                            </div>
+                            <div class="card-body">
+                                ${Object.entries(properties).map(([key, value]) => 
+                                    `<div class="d-flex justify-content-between">
+                                        <strong>${key}:</strong>
+                                        <span class="text-muted">${value}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            html += '<div class="mt-3"><h6>Performance Recommendations:</h6>';
+            html += '<ul class="list-unstyled">';
+            html += '<li><i class="fas fa-check text-success me-2"></i><strong>Small datasets (&lt; 50 items):</strong> Use InsertionSort - simple and efficient</li>';
+            html += '<li><i class="fas fa-check text-success me-2"></i><strong>General purpose:</strong> Use QuickSort - fastest average case</li>';
+            html += '<li><i class="fas fa-check text-success me-2"></i><strong>Stable sorting needed:</strong> Use MergeSort - guaranteed O(n log n)</li>';
+            html += '<li><i class="fas fa-check text-success me-2"></i><strong>Memory constrained:</strong> Use HeapSort - O(1) space</li>';
+            html += '</ul></div></div>';
+            
+            document.getElementById('comparisonResults').innerHTML = html;
+        }
+
+        // Memory Analysis
+        function runMemoryAnalysis() {
+            const startTime = performance.now();
+            
+            // Test memory usage with different data structures
+            const testData = generateTestData(1000);
+            
+            // Array memory test
+            const arrayStart = performance.memory ? performance.memory.usedJSHeapSize : 0;
+            const testArray = new Array(testData.length);
+            for (let i = 0; i < testData.length; i++) {
+                testArray[i] = testData[i];
+            }
+            const arrayEnd = performance.memory ? performance.memory.usedJSHeapSize : 0;
+            
+            // List (Array) memory test
+            const listStart = performance.memory ? performance.memory.usedJSHeapSize : 0;
+            const testList = [];
+            for (let i = 0; i < testData.length; i++) {
+                testList.push(testData[i]);
+            }
+            const listEnd = performance.memory ? performance.memory.usedJSHeapSize : 0;
+            
+            const endTime = performance.now();
+            const executionTime = (endTime - startTime).toFixed(2);
+            
+            const arrayMemory = arrayEnd - arrayStart;
+            const listMemory = listEnd - listStart;
+            
+            let html = '<div class="alert alert-warning"><h6><i class="fas fa-memory me-2"></i>Memory Analysis Results</h6>';
+            html += '<div class="row">';
+            html += '<div class="col-md-6">';
+            html += '<h6>Memory Usage Comparison:</h6>';
+            html += `<p><strong>Array Memory:</strong> ${arrayMemory} bytes</p>`;
+            html += `<p><strong>List Memory:</strong> ${listMemory} bytes</p>`;
+            html += `<p><strong>Difference:</strong> ${Math.abs(arrayMemory - listMemory)} bytes</p>`;
+            html += '</div>';
+            html += '<div class="col-md-6">';
+            html += '<h6>Performance Metrics:</h6>';
+            html += `<p><strong>Execution Time:</strong> ${executionTime}ms</p>`;
+            html += `<p><strong>Data Size:</strong> ${testData.length} items</p>`;
+            html += `<p><strong>Memory per Item:</strong> ${(arrayMemory / testData.length).toFixed(2)} bytes (array)</p>`;
+            html += '</div>';
+            html += '</div>';
+            
+            html += '<div class="mt-3"><h6>Memory Characteristics:</h6>';
+            html += '<div class="row">';
+            html += '<div class="col-md-6">';
+            html += '<h6>Arrays:</h6>';
+            html += '<ul class="list-unstyled">';
+            html += '<li><i class="fas fa-check text-success me-2"></i>Fixed size - predictable memory</li>';
+            html += '<li><i class="fas fa-check text-success me-2"></i>Contiguous memory allocation</li>';
+            html += '<li><i class="fas fa-check text-success me-2"></i>Lower overhead per element</li>';
+            html += '<li><i class="fas fa-times text-danger me-2"></i>Cannot resize dynamically</li>';
+            html += '</ul>';
+            html += '</div>';
+            html += '<div class="col-md-6">';
+            html += '<h6>Lists (Dynamic Arrays):</h6>';
+            html += '<ul class="list-unstyled">';
+            html += '<li><i class="fas fa-check text-success me-2"></i>Dynamic sizing capability</li>';
+            html += '<li><i class="fas fa-check text-success me-2"></i>Built-in growth management</li>';
+            html += '<li><i class="fas fa-times text-danger me-2"></i>Higher memory overhead</li>';
+            html += '<li><i class="fas fa-times text-danger me-2"></i>May cause memory fragmentation</li>';
+            html += '</ul>';
+            html += '</div>';
+            html += '</div></div></div>';
+            
+            document.getElementById('comparisonResults').innerHTML = html;
+        }
+
+        // Generate test data for memory analysis
+        function generateTestData(size) {
+            const data = [];
+            for (let i = 0; i < size; i++) {
+                data.push({
+                    id: i,
+                    title: `Test Issue ${i}`,
+                    priority: Math.floor(Math.random() * 4) + 1,
+                    points: Math.floor(Math.random() * 100),
+                    date: new Date().getTime() - Math.floor(Math.random() * 1000000)
+                });
+            }
+            return data;
+        }
+    </script>
+}

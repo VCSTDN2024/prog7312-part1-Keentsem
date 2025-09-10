@@ -1,0 +1,268 @@
+@model List<MunicipalServicesApp.Models.Notification>
+
+<div class="notification-dashboard">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">
+            <i class="fas fa-bell me-2"></i>Notifications
+            @if (Model.Any(n => !n.IsRead))
+            {
+                <span class="badge bg-danger">@Model.Count(n => !n.IsRead)</span>
+            }
+        </h5>
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" onclick="markAllAsRead()">
+                <i class="fas fa-check-double me-1"></i>Mark All Read
+            </button>
+            <button type="button" class="btn btn-outline-secondary" onclick="refreshNotifications()">
+                <i class="fas fa-sync-alt me-1"></i>Refresh
+            </button>
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="notification-list">
+            @foreach (var notification in Model.Take(10))
+            {
+                <div class="notification-item @(notification.IsRead ? "" : "unread")" data-notification-id="@notification.Id">
+                    <div class="d-flex align-items-start">
+                        <div class="notification-icon me-3">
+                            @if (notification.Type == MunicipalServicesApp.Models.NotificationType.BadgeEarned)
+                            {
+                                <i class="fas fa-medal text-warning fa-lg"></i>
+                            }
+                            else if (notification.Type == MunicipalServicesApp.Models.NotificationType.IssueSubmitted)
+                            {
+                                <i class="fas fa-plus-circle text-primary fa-lg"></i>
+                            }
+                            else if (notification.Type == MunicipalServicesApp.Models.NotificationType.IssueStatusChanged)
+                            {
+                                <i class="fas fa-edit text-info fa-lg"></i>
+                            }
+                            else if (notification.Type == MunicipalServicesApp.Models.NotificationType.IssueResolved)
+                            {
+                                <i class="fas fa-check-circle text-success fa-lg"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-bell text-secondary fa-lg"></i>
+                            }
+                        </div>
+                        <div class="notification-content flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6 class="notification-title mb-1 @(notification.IsRead ? "" : "fw-bold")">
+                                    @notification.Title
+                                </h6>
+                                <div class="notification-actions">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="markAsRead('@notification.Id')" title="Mark as read">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteNotification('@notification.Id')" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="notification-message mb-2">@notification.Message</p>
+                            <div class="notification-meta d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>@notification.CreatedAt.ToString("MMM dd, yyyy HH:mm")
+                                </small>
+                                @if (notification.PointsAwarded.HasValue && notification.PointsAwarded > 0)
+                                {
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-star me-1"></i>+@notification.PointsAwarded
+                                    </span>
+                                }
+                            </div>
+                            @if (notification.Type == MunicipalServicesApp.Models.NotificationType.BadgeEarned && notification.RelatedBadgeId.HasValue)
+                            {
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-warning" onclick="viewBadge(@notification.RelatedBadgeId)">
+                                        <i class="fas fa-medal me-1"></i>View Badge
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        @if (Model.Count > 10)
+        {
+            <div class="text-center mt-3">
+                <button class="btn btn-outline-primary" onclick="loadMoreNotifications()">
+                    <i class="fas fa-chevron-down me-1"></i>Load More
+                </button>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="text-center py-4">
+            <i class="fas fa-bell-slash text-muted fa-3x mb-3"></i>
+            <p class="text-muted">No notifications yet</p>
+            <small class="text-muted">You'll receive notifications when you earn badges or when your issues are updated.</small>
+        </div>
+    }
+</div>
+
+<style>
+    .notification-item {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        background: white;
+        transition: all 0.2s ease;
+    }
+
+    .notification-item:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
+    }
+
+    .notification-item.unread {
+        border-left: 4px solid #0d6efd;
+        background: #f8f9ff;
+    }
+
+    .notification-actions {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .notification-item:hover .notification-actions {
+        opacity: 1;
+    }
+
+    .notification-title {
+        color: #212529;
+    }
+
+    .notification-message {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        border-radius: 50%;
+    }
+</style>
+
+<script>
+    function markAsRead(notificationId) {
+        fetch('/Notifications/MarkAsRead', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ notificationId: notificationId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update UI
+                const notificationItem = document.querySelector(`[data-notification-id="${notificationId}"]`);
+                if (notificationItem) {
+                    notificationItem.classList.remove('unread');
+                    notificationItem.querySelector('.notification-title').classList.remove('fw-bold');
+                }
+                
+                // Update badge count
+                updateNotificationBadge();
+            }
+        })
+        .catch(error => console.error('Error marking notification as read:', error));
+    }
+
+    function markAllAsRead() {
+        fetch('/Notifications/MarkAllAsRead', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update UI
+                document.querySelectorAll('.notification-item.unread').forEach(item => {
+                    item.classList.remove('unread');
+                    item.querySelector('.notification-title').classList.remove('fw-bold');
+                });
+                
+                // Update badge count
+                updateNotificationBadge();
+            }
+        })
+        .catch(error => console.error('Error marking all notifications as read:', error));
+    }
+
+    function deleteNotification(notificationId) {
+        if (confirm('Are you sure you want to delete this notification?')) {
+            fetch('/Notifications/Delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ notificationId: notificationId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Remove from UI
+                    const notificationItem = document.querySelector(`[data-notification-id="${notificationId}"]`);
+                    if (notificationItem) {
+                        notificationItem.remove();
+                    }
+                    
+                    // Update badge count
+                    updateNotificationBadge();
+                }
+            })
+            .catch(error => console.error('Error deleting notification:', error));
+        }
+    }
+
+    function viewBadge(badgeId) {
+        window.location.href = '/Badges?highlight=' + badgeId;
+    }
+
+    function refreshNotifications() {
+        location.reload();
+    }
+
+    function loadMoreNotifications() {
+        // Implement pagination or load more functionality
+        console.log('Load more notifications');
+    }
+
+    function updateNotificationBadge() {
+        // Update the notification badge in the navigation
+        const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+        const badge = document.querySelector('.notification-badge');
+        if (badge) {
+            if (unreadCount > 0) {
+                badge.textContent = unreadCount;
+                badge.style.display = 'inline';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+    }
+
+    // Auto-refresh notifications every 30 seconds
+    setInterval(function() {
+        // Only refresh if user is on the page
+        if (!document.hidden) {
+            refreshNotifications();
+        }
+    }, 30000);
+</script>
