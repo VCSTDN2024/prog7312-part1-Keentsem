@@ -247,7 +247,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+- **Keentse Maja** - *Initial work* - [YouTube]([https://github.com/yourusername](https://youtu.be/AYFiGjFKrZM))
 
 ## 🙏 Acknowledgments
 
