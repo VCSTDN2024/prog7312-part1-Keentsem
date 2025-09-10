@@ -1,0 +1,53 @@
+@model MunicipalServicesApp.Models.Notification
+
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" id="notification-toast-@Model.Id">
+        <div class="toast-header @(Model.Type == MunicipalServicesApp.Models.NotificationType.BadgeEarned ? "bg-warning text-dark" : "bg-primary text-white")">
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Model.ImagePath" class="rounded me-2" alt="Badge" style="width: 20px; height: 20px;">
+            }
+            else
+            {
+                <i class="fas fa-bell me-2"></i>
+            }
+            <strong class="me-auto">@Model.Title</strong>
+            <small class="text-muted">@Model.CreatedAt.ToString("HH:mm")</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p class="mb-2">@Model.Message</p>
+            @if (Model.PointsAwarded.HasValue && Model.PointsAwarded > 0)
+            {
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-star text-warning me-1"></i>
+                    <span class="badge bg-success">+@Model.PointsAwarded points</span>
+                </div>
+            }
+            @if (Model.Type == MunicipalServicesApp.Models.NotificationType.BadgeEarned)
+            {
+                <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary" onclick="viewBadge(@Model.RelatedBadgeId)">
+                        <i class="fas fa-medal me-1"></i>View Badge
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    // Auto-dismiss toast after 5 seconds
+    setTimeout(function() {
+        var toastElement = document.getElementById('notification-toast-@Model.Id');
+        if (toastElement) {
+            var toast = new bootstrap.Toast(toastElement);
+            toast.hide();
+        }
+    }, 5000);
+
+    function viewBadge(badgeId) {
+        // Navigate to badges page or show badge details
+        window.location.href = '/Badges?highlight=' + badgeId;
+    }
+</script>

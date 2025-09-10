@@ -1,0 +1,501 @@
+﻿@page
+@model MunicipalServicesApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Municipal Services Portal";
+}
+
+<div class="container-fluid">
+    <!-- Hero Section -->
+    <div class="row bg-primary text-white py-5 mb-4">
+        <div class="col-12 text-center">
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <img src="~/images/coatofarms.png" alt="South African Coat of Arms" class="coat-of-arms me-4" />
+                <div>
+                    <h1 class="display-4 fw-bold mb-0">South African Municipal Services Portal</h1>
+                    <p class="lead mb-0">Serving our communities with pride and dedication</p>
+                </div>
+                <img src="~/images/SA.png" alt="South African Flag" class="sa-flag ms-4" />
+            </div>
+            <p class="lead">Report issues, track progress, and help improve our community services across South Africa</p>
+            <a href="/ReportIssues" class="btn btn-light btn-lg mt-3">
+                <i class="fas fa-plus-circle me-2"></i>Report an Issue
+            </a>
+        </div>
+    </div>
+
+    <!-- User Profile Section (if logged in) -->
+    @if (ViewData["IsLoggedIn"] as bool? == true)
+    {
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-gradient-primary text-white">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="card-title mb-2">
+                                    <i class="fas fa-user me-2"></i>Welcome back, @ViewData["Username"]!
+                                </h4>
+                                <p class="card-text mb-0">
+                                    <i class="fas fa-map-marker-alt me-1"></i>@ViewData["UserMunicipality"] | 
+                                    <i class="fas fa-star me-1"></i>@ViewData["TotalPoints"] points | 
+                                    <i class="fas fa-trophy me-1"></i>@ViewData["UserLevel"] Level
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <div class="btn-group" role="group">
+                                    <a href="/ReportIssues" class="btn btn-light">
+                                        <i class="fas fa-plus me-1"></i>Report Issue
+                                    </a>
+                                    <a href="/Badges" class="btn btn-outline-light">
+                                        <i class="fas fa-medal me-1"></i>My Badges
+                                    </a>
+                                    <a href="/Notifications" class="btn btn-outline-light">
+                                        <i class="fas fa-bell me-1"></i>Notifications
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Stats Dashboard -->
+    <div class="row mb-5">
+        <div class="col-md-3 mb-3">
+            <div class="card bg-success text-white h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">@Model.TotalIssues</h3>
+                    <p class="card-text">Total Issues Reported</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card bg-info text-white h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">@Model.ResolvedIssues</h3>
+                    <p class="card-text">Issues Resolved</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-white h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">@Model.OpenIssues</h3>
+                    <p class="card-text">Open Issues</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card bg-secondary text-white h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">@ViewData["TotalPoints"]</h3>
+                    <p class="card-text">Your Community Points</p>
+                    @if (ViewData["IsLoggedIn"] as bool? == true)
+                    {
+                        <div class="progress mt-2" style="height: 8px;">
+                            @{
+                                var totalPoints = (int)(ViewData["TotalPoints"] ?? 0);
+                                var progressPercentage = Math.Min(100, (totalPoints / 10.0)); // Scale to 1000 points = 100%
+                            }
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: @(progressPercentage)%" 
+                                 aria-valuenow="@totalPoints" aria-valuemin="0" aria-valuemax="1000">
+                            </div>
+                        </div>
+                        <small class="text-light">Level: @ViewData["UserLevel"]</small>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-flag me-2"></i>Our South African Municipal Services
+                <small class="d-block text-muted mt-2">Serving communities across all nine provinces</small>
+            </h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="service-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px dashed var(--embroidery-thread);">
+                        <i class="fas fa-tint fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">💧 Water Supply</h5>
+                    <p class="card-text">Report water leaks, quality issues, or supply problems affecting our communities</p>
+                    <a href="/ReportIssues?category=WaterSupply" class="btn btn-outline-primary">
+                        <i class="fas fa-plus me-1"></i>Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="service-icon bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px dashed var(--embroidery-thread);">
+                        <i class="fas fa-bolt fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">⚡ Electricity</h5>
+                    <p class="card-text">Report power outages, electrical hazards, or billing issues in your area</p>
+                    <a href="/ReportIssues?category=Electricity" class="btn btn-outline-warning">
+                        <i class="fas fa-plus me-1"></i>Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="service-icon bg-dark text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px dashed var(--embroidery-thread);">
+                        <i class="fas fa-road fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">🛣️ Roads & Infrastructure</h5>
+                    <p class="card-text">Report potholes, road damage, or traffic issues affecting our communities</p>
+                    <a href="/ReportIssues?category=Roads" class="btn btn-outline-dark">
+                        <i class="fas fa-plus me-1"></i>Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="service-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px dashed var(--embroidery-thread);">
+                        <i class="fas fa-recycle fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">♻️ Waste Management</h5>
+                    <p class="card-text">Report missed collections, illegal dumping, or bin issues in your neighborhood</p>
+                    <a href="/ReportIssues?category=WasteManagement" class="btn btn-outline-success">
+                        <i class="fas fa-plus me-1"></i>Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="service-icon bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px dashed var(--embroidery-thread);">
+                        <i class="fas fa-shield-alt fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">🛡️ Public Safety</h5>
+                    <p class="card-text">Report safety hazards, security concerns, or emergencies in your area</p>
+                    <a href="/ReportIssues?category=PublicSafety" class="btn btn-outline-danger">
+                        <i class="fas fa-plus me-1"></i>Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="service-icon bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px dashed var(--embroidery-thread);">
+                        <i class="fas fa-tree fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">🌳 Parks & Recreation</h5>
+                    <p class="card-text">Report park maintenance, equipment issues, or facility problems in your community</p>
+                    <a href="/ReportIssues?category=ParksAndRecreation" class="btn btn-outline-info">
+                        <i class="fas fa-plus me-1"></i>Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Issues -->
+    @if (Model.RecentIssues.Any())
+    {
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-list-alt me-2"></i>Recent Community Reports
+                    <small class="d-block text-muted mt-2">Latest issues reported by South African citizens</small>
+                </h2>
+                
+                <!-- Sorting Options -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-sort me-2"></i>Sort Issues by:
+                                </h5>
+                                <div class="btn-group" role="group" aria-label="Sorting options">
+                                    <button type="button" class="btn btn-outline-primary" onclick="sortIssues('priority')">
+                                        <i class="fas fa-flag me-1"></i>Priority (QuickSort)
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success" onclick="sortIssues('date')">
+                                        <i class="fas fa-calendar me-1"></i>Date (MergeSort)
+                                    </button>
+                                    <button type="button" class="btn btn-outline-warning" onclick="sortIssues('points')">
+                                        <i class="fas fa-star me-1"></i>Points (HeapSort)
+                                    </button>
+                                    <button type="button" class="btn btn-outline-info" onclick="sortIssues('title')">
+                                        <i class="fas fa-sort-alpha-down me-1"></i>Title (InsertionSort)
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="sortIssues('default')">
+                                        <i class="fas fa-undo me-1"></i>Default
+                                    </button>
+                                </div>
+                                <small class="text-muted d-block mt-2">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Each sorting method demonstrates different algorithms: QuickSort (O(n log n)), MergeSort (O(n log n)), HeapSort (O(n log n)), InsertionSort (O(n²))
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="issues-container">
+                    @foreach (var issue in Model.RecentIssues.Take(6))
+                    {
+                        <div class="col-md-6 mb-3 issue-card" 
+                             data-priority="@((int)issue.Priority)" 
+                             data-date="@issue.SubmittedAt.Ticks" 
+                             data-points="@issue.UserPoints" 
+                             data-title="@issue.Title.ToLower()">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="card-title fw-bold mb-0">@issue.Title</h6>
+                                        <small class="text-muted">@issue.SubmittedAt.ToString("dd MMM yyyy")</small>
+                                    </div>
+                                    <p class="card-text text-muted small mb-3">
+                                        <i class="fas fa-map-marker-alt me-1"></i>@issue.Location
+                                    </p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-@(issue.Priority == MunicipalServicesApp.Models.IssuePriority.Critical ? "danger" : 
+                                                          issue.Priority == MunicipalServicesApp.Models.IssuePriority.High ? "warning" : 
+                                                          issue.Priority == MunicipalServicesApp.Models.IssuePriority.Medium ? "info" : "secondary")">
+                                            <i class="fas fa-flag me-1"></i>@issue.Priority
+                                        </span>
+                                        <span class="badge bg-primary">
+                                            <i class="fas fa-tag me-1"></i>@issue.Category
+                                        </span>
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-star me-1"></i>+@issue.UserPoints pts
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Custom Sorting Algorithms Implementation
+        function sortIssues(sortType) {
+            const container = document.getElementById('issues-container');
+            const issues = Array.from(container.querySelectorAll('.issue-card'));
+            
+            // Update button states
+            document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            let sortedIssues;
+            const startTime = performance.now();
+            
+            switch(sortType) {
+                case 'priority':
+                    // QuickSort implementation for priority
+                    sortedIssues = quickSort(issues, 'priority');
+                    break;
+                case 'date':
+                    // MergeSort implementation for date
+                    sortedIssues = mergeSort(issues, 'date');
+                    break;
+                case 'points':
+                    // HeapSort implementation for points
+                    sortedIssues = heapSort(issues, 'points');
+                    break;
+                case 'title':
+                    // InsertionSort implementation for title
+                    sortedIssues = insertionSort(issues, 'title');
+                    break;
+                default:
+                    // Default order (as loaded)
+                    sortedIssues = issues;
+            }
+            
+            const endTime = performance.now();
+            const sortTime = (endTime - startTime).toFixed(2);
+            
+            // Clear container and append sorted issues
+            container.innerHTML = '';
+            sortedIssues.forEach(issue => container.appendChild(issue));
+            
+            // Show performance info
+            showSortPerformance(sortType, sortTime);
+        }
+        
+        // QuickSort Algorithm (O(n log n) average, O(n²) worst case)
+        function quickSort(arr, dataAttr) {
+            if (arr.length <= 1) return arr;
+            
+            const pivot = arr[Math.floor(arr.length / 2)];
+            const left = [];
+            const right = [];
+            
+            for (let i = 0; i < arr.length; i++) {
+                if (i === Math.floor(arr.length / 2)) continue;
+                
+                const comparison = compareValues(arr[i], pivot, dataAttr);
+                if (dataAttr === 'priority' || dataAttr === 'points') {
+                    // Descending order for priority and points
+                    if (comparison > 0) left.push(arr[i]);
+                    else right.push(arr[i]);
+                } else {
+                    // Ascending order for date and title
+                    if (comparison < 0) left.push(arr[i]);
+                    else right.push(arr[i]);
+                }
+            }
+            
+            return [...quickSort(left, dataAttr), pivot, ...quickSort(right, dataAttr)];
+        }
+        
+        // MergeSort Algorithm (O(n log n) guaranteed)
+        function mergeSort(arr, dataAttr) {
+            if (arr.length <= 1) return arr;
+            
+            const mid = Math.floor(arr.length / 2);
+            const left = mergeSort(arr.slice(0, mid), dataAttr);
+            const right = mergeSort(arr.slice(mid), dataAttr);
+            
+            return merge(left, right, dataAttr);
+        }
+        
+        function merge(left, right, dataAttr) {
+            const result = [];
+            let leftIndex = 0;
+            let rightIndex = 0;
+            
+            while (leftIndex < left.length && rightIndex < right.length) {
+                const comparison = compareValues(left[leftIndex], right[rightIndex], dataAttr);
+                if (dataAttr === 'date') {
+                    // Descending order for date (newest first)
+                    if (comparison > 0) {
+                        result.push(left[leftIndex]);
+                        leftIndex++;
+                    } else {
+                        result.push(right[rightIndex]);
+                        rightIndex++;
+                    }
+                } else {
+                    // Ascending order for other attributes
+                    if (comparison < 0) {
+                        result.push(left[leftIndex]);
+                        leftIndex++;
+                    } else {
+                        result.push(right[rightIndex]);
+                        rightIndex++;
+                    }
+                }
+            }
+            
+            return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+        }
+        
+        // HeapSort Algorithm (O(n log n) guaranteed)
+        function heapSort(arr, dataAttr) {
+            const n = arr.length;
+            
+            // Build heap
+            for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+                heapify(arr, n, i, dataAttr);
+            }
+            
+            // Extract elements from heap
+            for (let i = n - 1; i > 0; i--) {
+                [arr[0], arr[i]] = [arr[i], arr[0]];
+                heapify(arr, i, 0, dataAttr);
+            }
+            
+            return arr;
+        }
+        
+        function heapify(arr, n, i, dataAttr) {
+            let largest = i;
+            const left = 2 * i + 1;
+            const right = 2 * i + 2;
+            
+            if (left < n && compareValues(arr[left], arr[largest], dataAttr) > 0) {
+                largest = left;
+            }
+            
+            if (right < n && compareValues(arr[right], arr[largest], dataAttr) > 0) {
+                largest = right;
+            }
+            
+            if (largest !== i) {
+                [arr[i], arr[largest]] = [arr[largest], arr[i]];
+                heapify(arr, n, largest, dataAttr);
+            }
+        }
+        
+        // InsertionSort Algorithm (O(n²) but efficient for small datasets)
+        function insertionSort(arr, dataAttr) {
+            for (let i = 1; i < arr.length; i++) {
+                const key = arr[i];
+                let j = i - 1;
+                
+                while (j >= 0 && compareValues(arr[j], key, dataAttr) > 0) {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j + 1] = key;
+            }
+            
+            return arr;
+        }
+        
+        // Helper function to compare values
+        function compareValues(a, b, dataAttr) {
+            const aVal = a.getAttribute(`data-${dataAttr}`);
+            const bVal = b.getAttribute(`data-${dataAttr}`);
+            
+            if (dataAttr === 'title') {
+                return aVal.localeCompare(bVal);
+            } else {
+                return parseInt(aVal) - parseInt(bVal);
+            }
+        }
+        
+        // Show performance information
+        function showSortPerformance(algorithm, time) {
+            const performanceInfo = document.getElementById('performance-info') || createPerformanceInfo();
+            performanceInfo.innerHTML = `
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <i class="fas fa-clock me-2"></i>
+                    <strong>${getAlgorithmName(algorithm)}</strong> completed in <strong>${time}ms</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+        
+        function createPerformanceInfo() {
+            const div = document.createElement('div');
+            div.id = 'performance-info';
+            div.className = 'mt-3';
+            document.getElementById('issues-container').parentNode.insertBefore(div, document.getElementById('issues-container'));
+            return div;
+        }
+        
+        function getAlgorithmName(algorithm) {
+            const names = {
+                'priority': 'QuickSort (Priority)',
+                'date': 'MergeSort (Date)',
+                'points': 'HeapSort (Points)',
+                'title': 'InsertionSort (Title)',
+                'default': 'Default Order'
+            };
+            return names[algorithm] || algorithm;
+        }
+    </script>
+}

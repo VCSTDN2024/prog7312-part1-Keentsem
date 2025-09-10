@@ -1,0 +1,591 @@
+﻿@page
+@model MunicipalServicesApp.Pages.ReportIssuesModel
+@{
+    ViewData["Title"] = "Report an Issue - South African Municipal Services";
+}
+
+<div class="container">
+    <!-- South African Services Image Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="position-relative">
+                <img src="~/images/services.jpg" alt="South African Municipal Services" class="img-fluid w-100" style="height: 200px; object-fit: cover; border: 3px dashed var(--embroidery-thread);" />
+                <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                    <h2 class="display-6 fw-bold mb-0">Report a Municipal Issue</h2>
+                    <p class="lead mb-0">Help us improve our South African communities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">🇿🇦 Issue Report Form</h2>
+                    <p class="mb-0">Complete the form below to report municipal issues in your area</p>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>@Model.SuccessMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    @if (Model.NewBadges.Any())
+                    {
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <h5 class="alert-heading">
+                                <i class="fas fa-medal me-2"></i>🎉 Congratulations! You've earned new badges!
+                            </h5>
+                            <div class="row">
+                                @foreach (var badge in Model.NewBadges)
+                                {
+                                    <div class="col-md-6 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="@badge.ImagePath" alt="@badge.Name" class="me-3" style="width: 50px; height: 50px;" />
+                                            <div>
+                                                <h6 class="mb-1">@badge.Name</h6>
+                                                <p class="mb-1 text-muted small">@badge.Description</p>
+                                                <span class="badge bg-success">+@badge.PointsValue points</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    @if (Model.RecentNotifications.Any())
+                    {
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <h6 class="alert-heading">
+                                <i class="fas fa-bell me-2"></i>Recent Notifications
+                            </h6>
+                            @foreach (var notification in Model.RecentNotifications)
+                            {
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="fas fa-bell me-2 mt-1"></i>
+                                    <div class="flex-grow-1">
+                                        <strong>@notification.Title</strong>
+                                        <p class="mb-1 small">@notification.Message</p>
+                                        @if (notification.PointsAwarded.HasValue && notification.PointsAwarded > 0)
+                                        {
+                                            <span class="badge bg-success">+@notification.PointsAwarded points</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>@Model.ErrorMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Issue.Title" class="form-label">Issue Title *</label>
+                                <input asp-for="Issue.Title" class="form-control" placeholder="Brief description of the issue" />
+                                <span asp-validation-for="Issue.Title" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Issue.Category" class="form-label">Category *</label>
+                                <select asp-for="Issue.Category" class="form-select">
+                                    <option value="">Select a category</option>
+                                    <option value="WaterSupply">Water Supply</option>
+                                    <option value="Electricity">Electricity</option>
+                                    <option value="Roads">Roads & Infrastructure</option>
+                                    <option value="WasteManagement">Waste Management</option>
+                                    <option value="PublicSafety">Public Safety</option>
+                                    <option value="ParksAndRecreation">Parks & Recreation</option>
+                                    <option value="BuildingPermits">Building Permits</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <span asp-validation-for="Issue.Category" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Issue.Location" class="form-label">Location *</label>
+                                <input asp-for="Issue.Location" class="form-control" placeholder="Street address, suburb, or landmark" list="sa-locations" />
+                                <datalist id="sa-locations">
+                                    <option value="Cape Town, Western Cape" />
+                                    <option value="Johannesburg, Gauteng" />
+                                    <option value="Durban, KwaZulu-Natal" />
+                                    <option value="Pretoria, Gauteng" />
+                                    <option value="Port Elizabeth, Eastern Cape" />
+                                    <option value="Bloemfontein, Free State" />
+                                    <option value="Nelspruit, Mpumalanga" />
+                                    <option value="Polokwane, Limpopo" />
+                                    <option value="Kimberley, Northern Cape" />
+                                    <option value="Bisho, Eastern Cape" />
+                                </datalist>
+                                <small class="form-text text-muted">Include your province for better service</small>
+                                <span asp-validation-for="Issue.Location" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Issue.Priority" class="form-label">Priority Level</label>
+                                <select asp-for="Issue.Priority" class="form-select">
+                                    <option value="Low">Low - Minor inconvenience</option>
+                                    <option value="Medium" selected>Medium - Moderate impact</option>
+                                    <option value="High">High - Significant impact</option>
+                                    <option value="Critical">Critical - Safety hazard</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Issue.Description" class="form-label">Detailed Description *</label>
+                            <textarea asp-for="Issue.Description" class="form-control" rows="4" placeholder="Please provide detailed information about the issue..."></textarea>
+                            <span asp-validation-for="Issue.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Issue.UserEmail" class="form-label">Email Address (Optional)</label>
+                                <input asp-for="Issue.UserEmail" type="email" class="form-control" placeholder="your.email@example.com" />
+                                <small class="form-text text-muted">We'll use this to send you updates about your report</small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Issue.ContactNumber" class="form-label">Contact Number (Optional)</label>
+                                <input asp-for="Issue.ContactNumber" class="form-control" placeholder="+27 XX XXX XXXX" pattern="^(\+27|0)[0-9]{9}$" />
+                                <small class="form-text text-muted">South African mobile or landline number</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Attach Photos or Videos (Optional)</label>
+                            <input type="file" name="MediaFiles" class="form-control" multiple accept="image/*,video/*" />
+                            <small class="form-text text-muted">You can attach up to 5 files (images or videos) to help us understand the issue better</small>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="/" class="btn btn-outline-secondary me-md-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Report
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- South African Community Points Information -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        <i class="fas fa-medal me-2"></i>🇿🇦 Earn Community Badges & Points
+                    </h5>
+                    <p class="card-text">Help build a better South Africa! Earn special badges and points for your contributions:</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i><strong>Base Badge:</strong> 10 points per report</li>
+                                <li><i class="fas fa-check text-success me-2"></i><strong>Priority Patch:</strong> +5 to +20 points</li>
+                                <li><i class="fas fa-check text-success me-2"></i><strong>Media Ribbon:</strong> +5 points for photos</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center">
+                                <div class="badge bg-warning text-dark mb-2" style="font-size: 1.2rem;">
+                                    <i class="fas fa-trophy me-1"></i>Current Score
+                                </div>
+                                <div class="display-6 fw-bold text-primary">
+                                    @ViewData["TotalPoints"]
+                                </div>
+                                <small class="text-muted">Community Points</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Issue Operations (Operator Overloading Demo) -->
+            <div class="card mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-cogs me-2"></i>Advanced Issue Operations
+                        <small class="d-block">Demonstrating operator overloading for issue management</small>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="fas fa-balance-scale me-2"></i>Issue Comparison</h6>
+                            <p class="text-muted small">Compare issues using custom operators (>, <, ==, !=)</p>
+                            <div class="mb-3">
+                                <label class="form-label">Select two issues to compare:</label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select class="form-select" id="issue1-select">
+                                            <option value="">Select Issue 1</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-select" id="issue2-select">
+                                            <option value="">Select Issue 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary" onclick="compareIssues()">
+                                <i class="fas fa-balance-scale me-1"></i>Compare Issues
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="fas fa-plus me-2"></i>Issue Merging</h6>
+                            <p class="text-muted small">Merge two issues using the + operator</p>
+                            <div class="mb-3">
+                                <label class="form-label">Select issues to merge:</label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select class="form-select" id="merge-issue1-select">
+                                            <option value="">Select Issue 1</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-select" id="merge-issue2-select">
+                                            <option value="">Select Issue 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-outline-success" onclick="mergeIssues()">
+                                <i class="fas fa-plus me-1"></i>Merge Issues (+)
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="fas fa-times me-2"></i>Issue Scaling</h6>
+                            <p class="text-muted small">Scale issue points using the * operator</p>
+                            <div class="mb-3">
+                                <label class="form-label">Select issue to scale:</label>
+                                <select class="form-select" id="scale-issue-select">
+                                    <option value="">Select Issue</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Multiplier:</label>
+                                <input type="number" class="form-control" id="scale-multiplier" value="2" min="1" max="10">
+                            </div>
+                            <button type="button" class="btn btn-outline-warning" onclick="scaleIssue()">
+                                <i class="fas fa-times me-1"></i>Scale Issue (*)
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="fas fa-info-circle me-2"></i>Operator Overloading Info</h6>
+                            <div class="alert alert-light">
+                                <small>
+                                    <strong>Comparison Operators:</strong><br>
+                                    • <code>issue1 > issue2</code> - Higher priority/points<br>
+                                    • <code>issue1 == issue2</code> - Same ID<br>
+                                    • <code>issue1 != issue2</code> - Different issues<br><br>
+                                    <strong>Arithmetic Operators:</strong><br>
+                                    • <code>issue1 + issue2</code> - Merge issues<br>
+                                    • <code>issue * 2</code> - Scale points<br>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="operator-results" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Sample issues for operator overloading demonstration
+        const sampleIssues = [
+            {
+                id: 1,
+                title: "Water leak on Main Street",
+                priority: 4, // Critical
+                points: 25,
+                category: "WaterSupply",
+                location: "Cape Town, Western Cape",
+                description: "Major water leak affecting traffic"
+            },
+            {
+                id: 2,
+                title: "Pothole on Highway N1",
+                priority: 3, // High
+                points: 20,
+                category: "Roads",
+                location: "Johannesburg, Gauteng",
+                description: "Large pothole causing vehicle damage"
+            },
+            {
+                id: 3,
+                title: "Street light not working",
+                priority: 2, // Medium
+                points: 15,
+                category: "Electricity",
+                location: "Durban, KwaZulu-Natal",
+                description: "Street light has been out for 3 days"
+            },
+            {
+                id: 4,
+                title: "Garbage collection missed",
+                priority: 1, // Low
+                points: 10,
+                category: "WasteManagement",
+                location: "Port Elizabeth, Eastern Cape",
+                description: "Garbage not collected on scheduled day"
+            }
+        ];
+
+        // Initialize dropdowns when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            populateIssueDropdowns();
+        });
+
+        function populateIssueDropdowns() {
+            const selects = [
+                'issue1-select', 'issue2-select', 
+                'merge-issue1-select', 'merge-issue2-select', 
+                'scale-issue-select'
+            ];
+
+            selects.forEach(selectId => {
+                const select = document.getElementById(selectId);
+                sampleIssues.forEach(issue => {
+                    const option = document.createElement('option');
+                    option.value = issue.id;
+                    option.textContent = `${issue.title} (${issue.priority === 4 ? 'Critical' : issue.priority === 3 ? 'High' : issue.priority === 2 ? 'Medium' : 'Low'})`;
+                    select.appendChild(option);
+                });
+            });
+        }
+
+        // Issue class with operator overloading simulation
+        class Issue {
+            constructor(data) {
+                this.id = data.id;
+                this.title = data.title;
+                this.priority = data.priority;
+                this.points = data.points;
+                this.category = data.category;
+                this.location = data.location;
+                this.description = data.description;
+            }
+
+            // Comparison operators
+            static greaterThan(issue1, issue2) {
+                if (issue1.priority !== issue2.priority) {
+                    return issue1.priority > issue2.priority;
+                }
+                return issue1.points > issue2.points;
+            }
+
+            static lessThan(issue1, issue2) {
+                if (issue1.priority !== issue2.priority) {
+                    return issue1.priority < issue2.priority;
+                }
+                return issue1.points < issue2.points;
+            }
+
+            static equals(issue1, issue2) {
+                return issue1.id === issue2.id;
+            }
+
+            static notEquals(issue1, issue2) {
+                return issue1.id !== issue2.id;
+            }
+
+            // Arithmetic operators
+            static add(issue1, issue2) {
+                return new Issue({
+                    id: issue1.id,
+                    title: `${issue1.title} + ${issue2.title}`,
+                    priority: Math.max(issue1.priority, issue2.priority),
+                    points: issue1.points + issue2.points,
+                    category: issue1.category,
+                    location: issue1.location,
+                    description: `${issue1.description}\n\nMerged with: ${issue2.description}`
+                });
+            }
+
+            static multiply(issue, multiplier) {
+                return new Issue({
+                    id: issue.id,
+                    title: issue.title,
+                    priority: issue.priority,
+                    points: issue.points * multiplier,
+                    category: issue.category,
+                    location: issue.location,
+                    description: issue.description
+                });
+            }
+        }
+
+        function compareIssues() {
+            const issue1Id = document.getElementById('issue1-select').value;
+            const issue2Id = document.getElementById('issue2-select').value;
+
+            if (!issue1Id || !issue2Id) {
+                showResult('Please select both issues to compare.', 'warning');
+                return;
+            }
+
+            if (issue1Id === issue2Id) {
+                showResult('Please select different issues to compare.', 'warning');
+                return;
+            }
+
+            const issue1Data = sampleIssues.find(i => i.id == issue1Id);
+            const issue2Data = sampleIssues.find(i => i.id == issue2Id);
+
+            const issue1 = new Issue(issue1Data);
+            const issue2 = new Issue(issue2Data);
+
+            const results = {
+                'issue1 > issue2': Issue.greaterThan(issue1, issue2),
+                'issue1 < issue2': Issue.lessThan(issue1, issue2),
+                'issue1 >= issue2': Issue.greaterThan(issue1, issue2) || Issue.equals(issue1, issue2),
+                'issue1 <= issue2': Issue.lessThan(issue1, issue2) || Issue.equals(issue1, issue2),
+                'issue1 == issue2': Issue.equals(issue1, issue2),
+                'issue1 != issue2': Issue.notEquals(issue1, issue2)
+            };
+
+            let html = '<div class="alert alert-primary"><h6><i class="fas fa-balance-scale me-2"></i>Issue Comparison Results</h6>';
+            html += '<div class="row">';
+            html += '<div class="col-md-6">';
+            html += `<h6>Issue 1: ${issue1.title}</h6>`;
+            html += `<p><strong>Priority:</strong> ${getPriorityName(issue1.priority)}<br>`;
+            html += `<strong>Points:</strong> ${issue1.points}<br>`;
+            html += `<strong>Category:</strong> ${issue1.category}</p>`;
+            html += '</div>';
+            html += '<div class="col-md-6">';
+            html += `<h6>Issue 2: ${issue2.title}</h6>`;
+            html += `<p><strong>Priority:</strong> ${getPriorityName(issue2.priority)}<br>`;
+            html += `<strong>Points:</strong> ${issue2.points}<br>`;
+            html += `<strong>Category:</strong> ${issue2.category}</p>`;
+            html += '</div>';
+            html += '</div>';
+            html += '<h6>Operator Results:</h6>';
+            html += '<div class="row">';
+            Object.entries(results).forEach(([operator, result]) => {
+                html += `<div class="col-md-6 mb-2">
+                    <code>${operator}</code>: 
+                    <span class="badge bg-${result ? 'success' : 'danger'}">${result}</span>
+                </div>`;
+            });
+            html += '</div></div>';
+
+            showResult(html, 'info');
+        }
+
+        function mergeIssues() {
+            const issue1Id = document.getElementById('merge-issue1-select').value;
+            const issue2Id = document.getElementById('merge-issue2-select').value;
+
+            if (!issue1Id || !issue2Id) {
+                showResult('Please select both issues to merge.', 'warning');
+                return;
+            }
+
+            if (issue1Id === issue2Id) {
+                showResult('Please select different issues to merge.', 'warning');
+                return;
+            }
+
+            const issue1Data = sampleIssues.find(i => i.id == issue1Id);
+            const issue2Data = sampleIssues.find(i => i.id == issue2Id);
+
+            const issue1 = new Issue(issue1Data);
+            const issue2 = new Issue(issue2Data);
+
+            // Simulate the + operator: issue1 + issue2
+            const mergedIssue = Issue.add(issue1, issue2);
+
+            let html = '<div class="alert alert-success"><h6><i class="fas fa-plus me-2"></i>Issue Merging Results (using + operator)</h6>';
+            html += '<div class="row">';
+            html += '<div class="col-md-6">';
+            html += '<h6>Original Issues:</h6>';
+            html += `<p><strong>Issue 1:</strong> ${issue1.title} (${issue1.points} pts)<br>`;
+            html += `<strong>Issue 2:</strong> ${issue2.title} (${issue2.points} pts)</p>`;
+            html += '</div>';
+            html += '<div class="col-md-6">';
+            html += '<h6>Merged Issue (issue1 + issue2):</h6>';
+            html += `<p><strong>Title:</strong> ${mergedIssue.title}<br>`;
+            html += `<strong>Priority:</strong> ${getPriorityName(mergedIssue.priority)}<br>`;
+            html += `<strong>Points:</strong> ${mergedIssue.points} (${issue1.points} + ${issue2.points})<br>`;
+            html += `<strong>Category:</strong> ${mergedIssue.category}</p>`;
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="mt-3">';
+            html += '<h6>Description:</h6>';
+            html += `<p class="text-muted">${mergedIssue.description}</p>`;
+            html += '</div></div>';
+
+            showResult(html, 'info');
+        }
+
+        function scaleIssue() {
+            const issueId = document.getElementById('scale-issue-select').value;
+            const multiplier = parseInt(document.getElementById('scale-multiplier').value);
+
+            if (!issueId) {
+                showResult('Please select an issue to scale.', 'warning');
+                return;
+            }
+
+            if (multiplier < 1 || multiplier > 10) {
+                showResult('Multiplier must be between 1 and 10.', 'warning');
+                return;
+            }
+
+            const issueData = sampleIssues.find(i => i.id == issueId);
+            const issue = new Issue(issueData);
+
+            // Simulate the * operator: issue * multiplier
+            const scaledIssue = Issue.multiply(issue, multiplier);
+
+            let html = '<div class="alert alert-warning"><h6><i class="fas fa-times me-2"></i>Issue Scaling Results (using * operator)</h6>';
+            html += '<div class="row">';
+            html += '<div class="col-md-6">';
+            html += '<h6>Original Issue:</h6>';
+            html += `<p><strong>Title:</strong> ${issue.title}<br>`;
+            html += `<strong>Priority:</strong> ${getPriorityName(issue.priority)}<br>`;
+            html += `<strong>Points:</strong> ${issue.points}</p>`;
+            html += '</div>';
+            html += '<div class="col-md-6">';
+            html += '<h6>Scaled Issue (issue * ' + multiplier + '):</h6>';
+            html += `<p><strong>Title:</strong> ${scaledIssue.title}<br>`;
+            html += `<strong>Priority:</strong> ${getPriorityName(scaledIssue.priority)}<br>`;
+            html += `<strong>Points:</strong> ${scaledIssue.points} (${issue.points} × ${multiplier})</p>`;
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="mt-3">';
+            html += '<h6>Operator Overloading Demonstration:</h6>';
+            html += '<p class="text-muted">This demonstrates how custom operators can be defined for complex objects, enabling natural syntax like <code>issue1 + issue2</code> and <code>issue * 2</code>.</p>';
+            html += '</div></div>';
+
+            showResult(html, 'info');
+        }
+
+        function getPriorityName(priority) {
+            const priorities = { 1: 'Low', 2: 'Medium', 3: 'High', 4: 'Critical' };
+            return priorities[priority] || 'Unknown';
+        }
+
+        function showResult(content, type) {
+            const resultsDiv = document.getElementById('operator-results');
+            resultsDiv.innerHTML = content;
+        }
+    </script>
+}

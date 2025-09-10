@@ -1,0 +1,219 @@
+@page
+@model MunicipalServicesApp.Pages.BadgesModel
+@{
+    ViewData["Title"] = "My Badges - South African Municipal Services";
+}
+
+<div class="container">
+    <!-- Header Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="badge-header">
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-medal me-3"></i>🇿🇦 My Community Badges
+                </h1>
+                <p class="lead">Earned through your contributions to South African municipal services</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Statistics -->
+    <div class="row mb-5">
+        <div class="col-md-3 mb-3">
+            <div class="card badge-stat-card">
+                <div class="card-body text-center">
+                    <div class="badge-stat-icon">
+                        <i class="fas fa-trophy fa-2x text-warning"></i>
+                    </div>
+                    <h3 class="card-title text-primary">@Model.BadgeStats.EarnedBadges</h3>
+                    <p class="card-text">Badges Earned</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card badge-stat-card">
+                <div class="card-body text-center">
+                    <div class="badge-stat-icon">
+                        <i class="fas fa-lock fa-2x text-muted"></i>
+                    </div>
+                    <h3 class="card-title text-secondary">@Model.BadgeStats.LockedBadges</h3>
+                    <p class="card-text">Badges Locked</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card badge-stat-card">
+                <div class="card-body text-center">
+                    <div class="badge-stat-icon">
+                        <i class="fas fa-star fa-2x text-success"></i>
+                    </div>
+                    <h3 class="card-title text-success">@Model.BadgeStats.TotalPointsFromBadges</h3>
+                    <p class="card-text">Points from Badges</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card badge-stat-card">
+                <div class="card-body text-center">
+                    <div class="badge-stat-icon">
+                        <i class="fas fa-chart-pie fa-2x text-info"></i>
+                    </div>
+                    <h3 class="card-title text-info">@Model.BadgeStats.CompletionPercentage.ToString("F0")%</h3>
+                    <p class="card-text">Collection Complete</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-flag me-2"></i>Badge Collection Progress
+                    </h5>
+                    <div class="progress mb-3" style="height: 30px;">
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: @Model.BadgeStats.CompletionPercentage%" 
+                             aria-valuenow="@Model.BadgeStats.CompletionPercentage" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                            @Model.BadgeStats.EarnedBadges of @Model.BadgeStats.TotalBadges Badges
+                        </div>
+                    </div>
+                    <small class="text-muted">Keep reporting issues to unlock more badges!</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Badges -->
+    @if (Model.BadgeStats.RecentBadges.Any())
+    {
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4">
+                    <i class="fas fa-sparkles me-2"></i>Recently Earned Badges
+                </h3>
+                <div class="row">
+                    @foreach (var badge in Model.BadgeStats.RecentBadges)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <div class="card earned-badge-card">
+                                <div class="card-body text-center">
+                                    <div class="badge-image earned">
+                                        <img src="@badge.ImagePath" alt="@badge.Name" class="img-fluid" />
+                                        <div class="badge-glow"></div>
+                                    </div>
+                                    <h5 class="card-title mt-3">@badge.Name</h5>
+                                    <p class="card-text">@badge.Description</p>
+                                    <div class="badge-meta">
+                                        <span class="badge bg-success">+@badge.PointsValue pts</span>
+                                        <small class="text-muted d-block">Earned @badge.EarnedDate?.ToString("dd MMM yyyy")</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- All Badges Grid -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-center mb-4">
+                <i class="fas fa-medal me-2"></i>All Available Badges
+            </h3>
+            <div class="row">
+                @foreach (var badge in Model.AllBadges)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card badge-card @(badge.IsEarned ? "earned" : "locked")" 
+                             data-bs-toggle="tooltip" 
+                             title="@badge.Description">
+                            <div class="card-body text-center">
+                                <div class="badge-image @(badge.IsEarned ? "earned" : "locked")">
+                                    <img src="@badge.ImagePath" alt="@badge.Name" class="img-fluid" />
+                                    @if (!badge.IsEarned)
+                                    {
+                                        <div class="lock-overlay">
+                                            <i class="fas fa-lock fa-2x"></i>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge-glow"></div>
+                                    }
+                                </div>
+                                <h6 class="card-title mt-3">@badge.Name</h6>
+                                <p class="card-text small">@badge.Description</p>
+                                <div class="badge-meta">
+                                    @if (badge.IsEarned)
+                                    {
+                                        <span class="badge bg-success">+@badge.PointsValue pts</span>
+                                        <small class="text-muted d-block">Earned @badge.EarnedDate?.ToString("dd MMM yyyy")</small>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Locked</span>
+                                        @if (badge.RequiredCount > 0)
+                                        {
+                                            <small class="text-muted d-block">@badge.RequiredCount more reports needed</small>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="card call-to-action-card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <i class="fas fa-plus-circle me-2"></i>Want to Earn More Badges?
+                    </h4>
+                    <p class="card-text">Keep reporting municipal issues to unlock new badges and help improve your community!</p>
+                    <a href="/ReportIssues" class="btn btn-primary btn-lg">
+                        <i class="fas fa-plus me-2"></i>Report an Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Add animation to earned badges
+        document.addEventListener('DOMContentLoaded', function() {
+            const earnedBadges = document.querySelectorAll('.badge-card.earned');
+            earnedBadges.forEach((badge, index) => {
+                setTimeout(() => {
+                    badge.style.opacity = '0';
+                    badge.style.transform = 'translateY(20px)';
+                    badge.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        badge.style.opacity = '1';
+                        badge.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+}
